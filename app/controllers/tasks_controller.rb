@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     @tasks = Task.all
+    @task = Task.new
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -21,17 +22,18 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+      @task = Task.new(task_params)
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: "Task was successfully created." }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @task.save
+          format.html { redirect_to root_path, notice: "Task was successfully created." }
+          format.json { render :show, status: :created, location: @task }
+        else
+          @tasks = Task.all.order(created_at: :desc)
+          format.html { render :index, status: :unprocessable_entity }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
