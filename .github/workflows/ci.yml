@@ -110,6 +110,12 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
         run: bundle exec rspec
 
+      - name: Run e2e tests (features)
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432
+        run: bundle exec cucumber
+
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
         if: failure()
