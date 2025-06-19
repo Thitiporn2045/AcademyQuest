@@ -24,19 +24,22 @@
         </div>
       </div>
       
-      <div class="flex flex-col lg:flex-row lg:justify-between items-center gap-8 w-full mb-6">
+      <div class="flex flex-col lg:flex-row lg:justify-between items-center gap-8 w-full ">
         <div class="relative">
           <h1 class="font-bold text-2xl sm:text-3xl text-gray-800">
             Gift's Tasks 
           </h1>
           <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full"></div>
         </div>
-
-        <div class="flex flex-col lg:flex-row gap-6 w-full lg:w-auto">
-
+        <div class="flex flex-col lg:flex-row gap-6 w-full lg:w-auto -mb-2 sm:-mb-12">
+        <%= link_to brags_path,
+            class: "w-full lg:w-40 bg-white text-gray-800 rounded-full px-6 py-3 font-semibold transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-xl shadow-lg flex items-center space-x-2 justify-center relative overflow-hidden border border-pink-200 hover:border-pink-300",
+            data: { testid: "view-brag-button" } do %>
+            <span class="relative z-10">View Brag</span>
+          <% end %>
         </div>
-        <%= render partial: "form", locals: { task: @task }, class: "min-w-screen" %>
       </div>
+        <%= render partial: "form", locals: { task: @task }, class: "min-w-screen" %>
     </div>
 
     <div id="tasks" class="animate-fadeInUp animate-delay-200">
