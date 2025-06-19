@@ -87,7 +87,7 @@ RSpec.describe "/tasks", type: :request do
         task = Task.create! valid_attributes
         patch task_url(task), params: { task: new_attributes }
         task.reload
-        expect(response).to redirect_to(task_url(task))
+        expect(response).to redirect_to(root_path)
       end
     end
 
