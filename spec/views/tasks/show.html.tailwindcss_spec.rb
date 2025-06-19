@@ -8,5 +8,4 @@ RSpec.describe "tasks/show", type: :view do
       completed: false
     ))
   end
-
 end
